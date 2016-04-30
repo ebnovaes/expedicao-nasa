@@ -2,17 +2,18 @@ package expedicao.dominio.valueobject;
 
 public class Avancador extends Movimento {
 
-	public Avancador(Movimento proximoMovimento, char comando, Posicao posicaoOrigem) {
-		super(proximoMovimento, comando, posicaoOrigem);
+	public Avancador(Movimento proximoMovimento) {
+		super(proximoMovimento);
 	}
 
-	protected boolean consegueTratar() {
-		return Character.toLowerCase(this.comando) == 'm';
+	public boolean consegueTratar(char comando) {
+		return Character.toLowerCase(comando) == 'm';
 	}
 
-	protected Posicao realizarMovimento() {
+	protected Posicao realizarMovimento(Posicao posicaoOrigem) {
 		Orientacao orientacao = posicaoOrigem.getOrientacao();
-		Coordenada coordenada = orientacao.avancar(posicaoOrigem.getCoordenada());
+		MovimentoOrientacao movimento = orientacao.getMovimentoOrientacao();
+		Coordenada coordenada = movimento.avancar(posicaoOrigem.getCoordenada());
 		return new Posicao(coordenada, orientacao);
 	}
 	

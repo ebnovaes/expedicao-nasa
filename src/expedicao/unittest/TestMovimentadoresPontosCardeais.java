@@ -8,7 +8,7 @@ import org.junit.Test;
 import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
 
-public class TestAvancoPontosCardeais {
+public class TestMovimentadoresPontosCardeais {
 
 	@Before
 	public void setUp() {
@@ -19,8 +19,8 @@ public class TestAvancoPontosCardeais {
 		
 		// Arrange
 		Coordenada expected = new Coordenada(1, 6);
-		OrientacaoFactory factory = getOrientacaoFactory(1, 7);
-		Norte norte = new Norte(factory);
+		Superficie superficie = getSuperficie(1, 7);
+		MovimentoNorte norte = new MovimentoNorte(superficie);
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 5);
@@ -35,8 +35,8 @@ public class TestAvancoPontosCardeais {
 
 		// Arrange
 		Coordenada expected = new Coordenada(1, 5);
-		OrientacaoFactory factory = getOrientacaoFactory(1, 5);
-		Norte norte = new Norte(factory);
+		Superficie superficie = getSuperficie(1, 5);
+		MovimentoNorte norte = new MovimentoNorte(superficie);
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 5);
@@ -50,9 +50,9 @@ public class TestAvancoPontosCardeais {
 	public void quandoNorteRecebeCoordenadaX1Y5ELimiteEX1Y4_DeveRetornarCoordenadaX1Y4() {
 
 		// Arrange
-		Coordenada expected = new Coordenada(1, 5);
-		OrientacaoFactory factory = getOrientacaoFactory(1, 4);
-		Norte norte = new Norte(factory);
+		Coordenada expected = new Coordenada(1, 4);
+		Superficie superficie = getSuperficie(1, 4);
+		MovimentoNorte norte = new MovimentoNorte(superficie);
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 5);
@@ -67,8 +67,7 @@ public class TestAvancoPontosCardeais {
 		
 		// Arrange
 		Coordenada expected = new Coordenada(1, 1);
-		OrientacaoFactory factory = getOrientacaoFactory(1, 2);
-		Sul sul = new Sul(factory);
+		MovimentoSul sul = new MovimentoSul();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 2);
@@ -83,8 +82,7 @@ public class TestAvancoPontosCardeais {
 		
 		// Arrange
 		Coordenada expected = new Coordenada(2, 2);
-		OrientacaoFactory factory = getOrientacaoFactory(2, 3);
-		Sul sul = new Sul(factory);
+		MovimentoSul sul = new MovimentoSul();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(2, 3);
@@ -98,8 +96,7 @@ public class TestAvancoPontosCardeais {
 	public void quandoSulRecebeCoordenadaX3Y1_DeveRetornarCoordenadaX3Y1() {
 		// Arrange
 		Coordenada expected = new Coordenada(3, 1);
-		OrientacaoFactory factory = getOrientacaoFactory(3, 1);
-		Sul sul = new Sul(factory);
+		MovimentoSul sul = new MovimentoSul();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(3, 1);
@@ -114,8 +111,7 @@ public class TestAvancoPontosCardeais {
 		
 		// Arrange
 		Coordenada expected = new Coordenada(1, 1);
-		OrientacaoFactory factory = getOrientacaoFactory(2, 1);
-		Oeste oeste = new Oeste(factory);
+		MovimentoOeste oeste = new MovimentoOeste();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(2, 1);
@@ -130,8 +126,7 @@ public class TestAvancoPontosCardeais {
 		
 		// Arrange
 		Coordenada expected = new Coordenada(2, 2);
-		OrientacaoFactory factory = getOrientacaoFactory(3, 2);
-		Oeste oeste = new Oeste(factory);
+		MovimentoOeste oeste = new MovimentoOeste();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(3, 2);
@@ -145,8 +140,7 @@ public class TestAvancoPontosCardeais {
 	public void quandoOesteRecebeCoordenadaX1Y3_DeveRetornarCoordenadaX1Y3() {
 		// Arrange
 		Coordenada expected = new Coordenada(1, 3);
-		OrientacaoFactory factory = getOrientacaoFactory(1, 3);
-		Oeste oeste = new Oeste(factory);
+		MovimentoOeste oeste = new MovimentoOeste();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 3);
@@ -156,9 +150,57 @@ public class TestAvancoPontosCardeais {
 		assertEquals(expected, actual);
 	}
 
-	private OrientacaoFactory getOrientacaoFactory(int x, int y){
-		Coordenada coordenada = new Coordenada(x, y);
-		Superficie superficie = new Superficie(coordenada);
-		return new OrientacaoFactory(superficie);
+	@Test
+	public void quandoLesteRecebeCoordenadaX5Y1ELimiteEX7Y1_DeveRetornarCoordenadaX6Y1() {
+		
+		// Arrange
+		Coordenada expected = new Coordenada(6, 1);
+		Superficie superficie = getSuperficie(7, 1);
+		MovimentoLeste leste = new MovimentoLeste(superficie);
+
+		// Act
+		Coordenada coordenadaReferencia = new Coordenada(5, 1);
+		Coordenada actual = leste.avancar(coordenadaReferencia);
+		
+		// Assert
+		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void quandoLesteRecebeCoordenadaX5Y1ELimiteX5Y1_DeveRetornarCoordenadaX5Y1() {
+
+		// Arrange
+		Coordenada expected = new Coordenada(5, 1);
+		Superficie superficie = getSuperficie(5, 1);
+		MovimentoLeste leste = new MovimentoLeste(superficie);
+
+		// Act
+		Coordenada coordenadaReferencia = new Coordenada(5, 1);
+		Coordenada actual = leste.avancar(coordenadaReferencia);
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void quandoLesteRecebeCoordenadaX5Y1ELimiteEX4Y1_DeveRetornarCoordenadaX4Y1() {
+
+		// Arrange
+		Coordenada expected = new Coordenada(4, 1);
+		Superficie superficie = getSuperficie(4, 1);
+		MovimentoLeste leste = new MovimentoLeste(superficie);
+
+		// Act
+		Coordenada coordenadaReferencia = new Coordenada(5, 1);
+		Coordenada actual = leste.avancar(coordenadaReferencia);
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
+	
+	private Superficie getSuperficie(int x, int y){
+		Coordenada coordenada = new Coordenada(x, y);
+		return new Superficie(coordenada);
+	}
+
 }

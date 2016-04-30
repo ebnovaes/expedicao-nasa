@@ -2,29 +2,29 @@ package expedicao.dominio.valueobject;
 
 public abstract class Movimento {
 	
-	public Movimento(Movimento proximoMovimento, char comando, Posicao posicaoOrigem){
+	public Movimento(Movimento proximoMovimento){
 		this.proximoMovimento = proximoMovimento;
-		this.comando = comando;
-		this.posicaoOrigem = posicaoOrigem;
 	}
 	
-	protected abstract boolean consegueTratar();
+	protected abstract boolean consegueTratar(char comando);
 	
-	protected abstract Posicao realizarMovimento();
+	protected abstract Posicao realizarMovimento(Posicao posicaoOrigem);
 	
-	public Posicao movimentar(){
-		if (this.consegueTratar()){
-			return realizarMovimento();
+	public Posicao movimentar(char comando, Posicao posicaoOrigem){
+		if (this.consegueTratar(comando)){
+			return realizarMovimento(posicaoOrigem);
 		}
 		
 		if (proximoMovimento != null){
-			return proximoMovimento.movimentar();
+			return proximoMovimento.movimentar(comando, posicaoOrigem);
 		}
 		
 		return null;
 	}
 	
+	public Movimento getProximoMovimento(){
+		return this.proximoMovimento;
+	}
+	
 	protected Movimento proximoMovimento;
-	protected char comando;
-	protected Posicao posicaoOrigem;
 }

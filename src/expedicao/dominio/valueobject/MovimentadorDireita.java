@@ -2,15 +2,15 @@ package expedicao.dominio.valueobject;
 
 public class MovimentadorDireita extends Movimento {
 
-	public MovimentadorDireita(Movimento proximoMovimento, char comando, Posicao posicaoOrigem) {
-		super(proximoMovimento, comando, posicaoOrigem);
+	public MovimentadorDireita(Movimento proximoMovimento) {
+		super(proximoMovimento);
 	}
 	
-	protected boolean consegueTratar() {
-		return Character.toLowerCase(this.comando) == 'r';
+	public boolean consegueTratar(char comando) {
+		return Character.toLowerCase(comando) == 'r';
 	}
 
-	protected Posicao realizarMovimento() {
+	protected Posicao realizarMovimento(Posicao posicaoOrigem) {
 		Orientacao novaOrientacao = posicaoOrigem.getOrientacao().aDireita();
 		Posicao retorno = new Posicao(posicaoOrigem.getCoordenada(), novaOrientacao);
 		

@@ -13,4 +13,5 @@ public final class Robo {
 	}
 	
 	private Posicao posicao;
+	
 }

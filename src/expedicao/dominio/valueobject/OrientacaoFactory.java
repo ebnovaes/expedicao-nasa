@@ -1,9 +1,11 @@
 package expedicao.dominio.valueobject;
 
+import expedicao.dominio.entidade.Superficie;
+
 public class OrientacaoFactory {
 
-	public OrientacaoFactory(Coordenada coordenadaLimite){
-		this.coordenadaLimite = coordenadaLimite;
+	public OrientacaoFactory(Superficie superficie){
+		this.superficie = superficie;
 	}
 	
 	public Orientacao getNorte(){
@@ -22,9 +24,9 @@ public class OrientacaoFactory {
 		return new Leste(this);
 	}
 	
-	public Coordenada getCoordenadaLimite(){
-		return coordenadaLimite;
+	public Superficie getSuperficie() {
+		return superficie;
 	}
-	
-	private Coordenada coordenadaLimite;
+
+	private Superficie superficie;
 }

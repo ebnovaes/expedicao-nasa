@@ -18,10 +18,14 @@ public final class Sul extends Orientacao {
 		return orientacaoFactory.getLeste();
 	}
 
-	public boolean isPermitidoAvancar(Coordenada coordenadaReferencia) 
-	{
-		int y = coordenadaReferencia.getY();
-		return (y - 1 >= 1);
+	@Override
+	public Coordenada avancar(Coordenada coordenadaReferencia) {
+		int yMenosUm = coordenadaReferencia.getY() - 1;
+		if (yMenosUm > 0){
+			return new Coordenada(coordenadaReferencia.getX(), yMenosUm);
+		}
+		
+		return coordenadaReferencia;
 	}
 
 }

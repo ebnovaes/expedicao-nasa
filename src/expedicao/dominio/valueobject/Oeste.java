@@ -18,11 +18,14 @@ public final class Oeste extends Orientacao {
 		return orientacaoFactory.getSul();
 	}
 
-	public boolean isPermitidoAvancar(Coordenada coordenadaReferencia) {
-		Coordenada coordenadaLimite = orientacaoFactory.getCoordenadaLimite();
-		int coordenadaReferenciaX = coordenadaReferencia.getX();
-		int coordenadaLimiteX = coordenadaLimite.getX();
-		return (coordenadaReferenciaX + 1 <= coordenadaLimiteX);
+	public Coordenada avancar(Coordenada coordenadaReferencia) {
+		int xMenosUm = coordenadaReferencia.getX() - 1;
+		if (xMenosUm - 1 >= 0){
+			return new Coordenada(xMenosUm, coordenadaReferencia.getY());
+		}
+		
+		return coordenadaReferencia;
+
 	}
 
 }

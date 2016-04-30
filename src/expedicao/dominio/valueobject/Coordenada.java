@@ -18,4 +18,22 @@ public class Coordenada {
 	private int x;
 	
 	private int y;
+	
+	public int hashCode() {
+		final int primo = 31;
+		int result = 1;
+		result = primo * result + x;
+		result = primo * result + y;
+		return result;
+	}
+
+	public boolean equals(Object obj) {
+		if (obj == null || getClass() != obj.getClass()){
+			return false;
+		}
+			
+		Coordenada that = (Coordenada) obj;
+		return this.x == that.getX() && this.y == that.getY();
+	}
+	
 }

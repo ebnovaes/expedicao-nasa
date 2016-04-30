@@ -18,9 +18,18 @@ public final class Leste extends Orientacao {
 		return orientacaoFactory.getNorte();
 	}
 
-	public boolean isPermitidoAvancar(Coordenada coordenadaReferencia) {
-		int x = coordenadaReferencia.getX();
-		return (x - 1 >= 0);
+	@Override
+	public Coordenada avancar(Coordenada coordenadaReferencia) {
+		Coordenada coordenadaLimite = orientacaoFactory.getSuperficie().getTamanhoMaximoSupeficie();
+		int coordenadaReferenciaX = coordenadaReferencia.getX();
+		int coordenadaLimiteX = coordenadaLimite.getX();
+		int xMaisUm = coordenadaReferenciaX + 1;
+		
+		if (xMaisUm <= coordenadaLimiteX){
+			return new Coordenada(xMaisUm, coordenadaReferencia.getY());
+		}
+		
+		return coordenadaReferencia;
 	}
 
 }

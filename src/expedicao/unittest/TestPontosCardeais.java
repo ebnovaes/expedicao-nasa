@@ -5,13 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
 
 public class TestPontosCardeais {
 
 	@Before
 	public void setUp(){
-		this.orientacaoFactory = new OrientacaoFactory(new Coordenada(0, 0));
+		Superficie superficie = new Superficie(new Coordenada(0, 0));
+		this.orientacaoFactory = new OrientacaoFactory(superficie);
 	}
 	
 	@Test

@@ -12,7 +12,7 @@ public abstract class Orientacao {
 	
 	public abstract Orientacao aEsquerda();
 	
-	public abstract boolean isPermitidoAvancar(Coordenada coordenadaReferencia);
+	public abstract Coordenada avancar(Coordenada coordenadaReferencia);
 
 	protected OrientacaoFactory orientacaoFactory;
 }

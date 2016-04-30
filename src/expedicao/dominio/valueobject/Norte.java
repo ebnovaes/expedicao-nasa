@@ -18,11 +18,18 @@ public class Norte extends Orientacao {
 		return orientacaoFactory.getOeste();
 	}
 
-	public boolean isPermitidoAvancar(Coordenada coordenadaReferencia) {
-		Coordenada coordenadaLimite = orientacaoFactory.getCoordenadaLimite();
+	public Coordenada avancar(Coordenada coordenadaReferencia) {
+		
+		Coordenada coordenadaLimite = orientacaoFactory.getSuperficie().getTamanhoMaximoSupeficie();
 		int coordenadaReferenciaY = coordenadaReferencia.getY();
 		int coordenadaLimiteY = coordenadaLimite.getY();
-		return (coordenadaReferenciaY + 1 <= coordenadaLimiteY);
+		int yMaisUm = coordenadaReferenciaY + 1;
+		
+		if (yMaisUm <= coordenadaLimiteY){
+			return new Coordenada(coordenadaReferencia.getX(), yMaisUm);
+		}
+		
+		return coordenadaReferencia;
 	}
 
 }

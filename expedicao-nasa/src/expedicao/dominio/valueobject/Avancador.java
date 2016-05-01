@@ -1,5 +1,9 @@
 package expedicao.dominio.valueobject;
 
+import expedicao.dominio.valueobject.movimentador.Movimento;
+import expedicao.dominio.valueobject.movimento.MovimentoOrientacao;
+import expedicao.dominio.valueobject.orientacao.Orientacao;
+
 public class Avancador extends Movimento {
 
 	public Avancador(Movimento proximoMovimento) {

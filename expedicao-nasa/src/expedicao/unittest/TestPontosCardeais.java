@@ -7,6 +7,11 @@ import org.junit.Test;
 
 import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
+import expedicao.dominio.valueobject.orientacao.Leste;
+import expedicao.dominio.valueobject.orientacao.Norte;
+import expedicao.dominio.valueobject.orientacao.Oeste;
+import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
+import expedicao.dominio.valueobject.orientacao.Sul;
 
 public class TestPontosCardeais {
 

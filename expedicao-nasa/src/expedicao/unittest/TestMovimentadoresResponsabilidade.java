@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import expedicao.dominio.valueobject.Avancador;
-import expedicao.dominio.valueobject.MovimentadorDireita;
-import expedicao.dominio.valueobject.MovimentadorEsquerda;
+import expedicao.dominio.valueobject.movimentador.MovimentadorDireita;
+import expedicao.dominio.valueobject.movimentador.MovimentadorEsquerda;
 
 public class TestMovimentadoresResponsabilidade {
 

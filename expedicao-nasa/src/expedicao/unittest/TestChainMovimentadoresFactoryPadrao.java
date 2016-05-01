@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import expedicao.dominio.valueobject.*;
+import expedicao.dominio.valueobject.movimentador.MovimentadorDireita;
+import expedicao.dominio.valueobject.movimentador.MovimentadorEsquerda;
+import expedicao.dominio.valueobject.movimentador.Movimento;
+import expedicao.dominio.valueobject.movimentador.MovimentoChainFactory;
 
 public class TestChainMovimentadoresFactoryPadrao {
 

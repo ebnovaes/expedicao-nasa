@@ -6,6 +6,14 @@ import org.junit.Test;
 
 import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
+import expedicao.dominio.valueobject.movimentador.MovimentadorDireita;
+import expedicao.dominio.valueobject.movimentador.MovimentadorEsquerda;
+import expedicao.dominio.valueobject.orientacao.Leste;
+import expedicao.dominio.valueobject.orientacao.Norte;
+import expedicao.dominio.valueobject.orientacao.Oeste;
+import expedicao.dominio.valueobject.orientacao.Orientacao;
+import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
+import expedicao.dominio.valueobject.orientacao.Sul;
 
 public class TestMovimentadores {
 

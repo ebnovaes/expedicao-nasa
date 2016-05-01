@@ -6,6 +6,15 @@ import org.junit.Test;
 
 import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
+import expedicao.dominio.valueobject.movimento.MovimentoLeste;
+import expedicao.dominio.valueobject.movimento.MovimentoNorte;
+import expedicao.dominio.valueobject.movimento.MovimentoOeste;
+import expedicao.dominio.valueobject.movimento.MovimentoSul;
+import expedicao.dominio.valueobject.orientacao.Leste;
+import expedicao.dominio.valueobject.orientacao.Norte;
+import expedicao.dominio.valueobject.orientacao.Oeste;
+import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
+import expedicao.dominio.valueobject.orientacao.Sul;
 
 public class TestFactoryMethodPontosCardeais {
 

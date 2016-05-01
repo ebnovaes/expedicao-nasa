@@ -1,11 +1,11 @@
 package expedicao.dominio.entidade;
 
 import expedicao.dominio.valueobject.Coordenada;
-import expedicao.dominio.valueobject.Movimento;
-import expedicao.dominio.valueobject.MovimentoChainFactory;
-import expedicao.dominio.valueobject.Orientacao;
-import expedicao.dominio.valueobject.OrientacaoFactory;
 import expedicao.dominio.valueobject.Posicao;
+import expedicao.dominio.valueobject.movimentador.Movimento;
+import expedicao.dominio.valueobject.movimentador.MovimentoChainFactory;
+import expedicao.dominio.valueobject.orientacao.Orientacao;
+import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
 
 public final class Robo {
 

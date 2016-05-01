@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import expedicao.dominio.entidade.Superficie;
 import expedicao.dominio.valueobject.*;
+import expedicao.dominio.valueobject.movimento.MovimentoLeste;
+import expedicao.dominio.valueobject.movimento.MovimentoNorte;
+import expedicao.dominio.valueobject.movimento.MovimentoOeste;
+import expedicao.dominio.valueobject.movimento.MovimentoSul;
 
 public class TestMovimentadoresPontosCardeais {
 

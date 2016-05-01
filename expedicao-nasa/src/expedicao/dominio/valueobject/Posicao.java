@@ -1,5 +1,7 @@
 package expedicao.dominio.valueobject;
 
+import expedicao.dominio.valueobject.orientacao.Orientacao;
+
 public final class Posicao {
 
 	public Posicao(Coordenada coordenada, Orientacao orientacao){

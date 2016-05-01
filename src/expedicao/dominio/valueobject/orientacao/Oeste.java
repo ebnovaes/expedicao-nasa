@@ -10,7 +10,7 @@ public final class Oeste extends Orientacao {
 	}
 
 	public char sigla() {
-		return 'O';
+		return 'W';
 	}
 
 	public Orientacao aDireita() {

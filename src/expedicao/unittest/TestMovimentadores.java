@@ -14,7 +14,7 @@ public class TestMovimentadores {
 	@Test
 	public void quandoApontarParaSulMovimentadorDireitaAcionado_DeveRetornarNovaPosicaoApontandoParaOeste() {
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory factory = new OrientacaoFactory(superficie);
 		Orientacao orientacaoExpected = new Oeste(factory);
 		Posicao expected = new Posicao(coordenada, orientacaoExpected);
@@ -30,7 +30,7 @@ public class TestMovimentadores {
 	@Test
 	public void quandoApontarParaLesteMovimentadorEsquerdaAcionado_DeveRetornarNovaPosicaoApontandoParaNorte() {
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory factory = new OrientacaoFactory(superficie);
 		Orientacao orientacaoExpected = new Norte(factory);
 		Posicao expected = new Posicao(coordenada, orientacaoExpected);
@@ -47,7 +47,7 @@ public class TestMovimentadores {
 	public void quandoCoordenadaX2Y1MovimentadorAvancadorApontandoParaOeste_deveRetornarNovaCoordenadaX1Y1() {
 		// Arrange
 		Coordenada coordenadaExpected = new Coordenada(1, 1);
-		Superficie superficie = new Superficie(new Coordenada(10, 10));
+		Superficie superficie = new Superficie(0, new Coordenada(10, 10));
 		OrientacaoFactory factory = new OrientacaoFactory(superficie);
 		Orientacao orientacao = new Oeste(factory);
 		Posicao expected = new Posicao(coordenadaExpected, orientacao);

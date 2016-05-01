@@ -229,7 +229,7 @@ public class TestMovimentadoresPontosCardeais {
 	
 	private Superficie getSuperficie(int x, int y){
 		Coordenada coordenada = new Coordenada(x, y);
-		return new Superficie(coordenada);
+		return new Superficie(0, coordenada);
 	}
 
 }

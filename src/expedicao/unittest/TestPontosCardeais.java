@@ -13,7 +13,7 @@ public class TestPontosCardeais {
 
 	@Before
 	public void setUp(){
-		Superficie superficie = new Superficie(new Coordenada(0, 0));
+		Superficie superficie = new Superficie(0, new Coordenada(0, 0));
 		this.orientacaoFactory = new OrientacaoFactory(superficie);
 	}
 	
@@ -21,14 +21,14 @@ public class TestPontosCardeais {
 	public void leste_deveRetornarSiglaCharL() {
 		Leste leste = new Leste(orientacaoFactory);
 		
-		assertEquals('L', leste.sigla());
+		assertEquals('E', leste.sigla());
 	}
 	
 	@Test
 	public void oeste_deveRetornarSiglaCharO() {
 		Oeste oeste = new Oeste(orientacaoFactory);
 		
-		assertEquals('O', oeste.sigla());
+		assertEquals('W', oeste.sigla());
 	}
 	
 	@Test
@@ -63,14 +63,14 @@ public class TestPontosCardeais {
 	public void sul_deveRetornarOesteADireita(){
 		Sul sul = new Sul(orientacaoFactory);
 		
-		assertEquals('O', sul.aDireita().sigla());
+		assertEquals('W', sul.aDireita().sigla());
 	}
 	
 	@Test
 	public void sul_deveRetornarLesteAEsquerda(){
 		Sul sul = new Sul(orientacaoFactory);
 		
-		assertEquals('L', sul.aEsquerda().sigla());
+		assertEquals('E', sul.aEsquerda().sigla());
 	}
 	
 	@Test
@@ -91,14 +91,14 @@ public class TestPontosCardeais {
 	public void norte_deveRetornarLesteADireita(){
 		Norte norte = new Norte(orientacaoFactory);
 		
-		assertEquals('L', norte.aDireita().sigla());
+		assertEquals('E', norte.aDireita().sigla());
 	}
 	
 	@Test
 	public void norte_deveRetornarOesteAEsquerda(){
 		Norte norte = new Norte(orientacaoFactory);
 		
-		assertEquals('O', norte.aEsquerda().sigla());
+		assertEquals('W', norte.aEsquerda().sigla());
 	}
 	
 	private OrientacaoFactory orientacaoFactory;

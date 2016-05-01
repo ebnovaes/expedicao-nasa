@@ -7,18 +7,22 @@ import expedicao.dominio.valueobject.movimentador.MovimentoChainFactory;
 import expedicao.dominio.valueobject.orientacao.Orientacao;
 import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
 
-public final class Robo {
+public final class Sonda {
 
-	public Robo(OrientacaoFactory orientacaoFactory){
+	public Sonda(OrientacaoFactory orientacaoFactory, int ordem, String cadeiaComadosInicial){
 		Coordenada coordenada = new Coordenada(0, 0);
 		Orientacao norte = orientacaoFactory.getNorte();
 		this.posicao = new Posicao(coordenada, norte);
 		this.superficie = orientacaoFactory.getSuperficie();
+		this.ordem = ordem;
+		this.cadeiaComadosInicial = cadeiaComadosInicial;
 	}
 
-	public Robo(Posicao posicao, Superficie superficie){
+	public Sonda(Posicao posicao, Superficie superficie, int ordem, String cadeiaComadosInicial){
 		this.posicao = posicao;
 		this.superficie = superficie;
+		this.ordem = ordem;
+		this.cadeiaComadosInicial = cadeiaComadosInicial;
 	}
 	
 	public Posicao getPosicao(){
@@ -39,7 +43,22 @@ public final class Robo {
 		return posicaoFinal;		
 	}
 	
+	public Posicao movimentar(){
+		return movimentar(this.cadeiaComadosInicial);
+	}
+	public Superficie getSuperficie() {
+		return superficie;
+	}
+
+	public int getOrdem(){
+		return ordem;
+	}
+	
 	private Posicao posicao;
 	
 	private Superficie superficie;
+	
+	private int ordem;
+	
+	private String cadeiaComadosInicial;
 }

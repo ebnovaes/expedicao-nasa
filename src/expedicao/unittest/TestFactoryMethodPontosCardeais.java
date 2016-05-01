@@ -14,7 +14,7 @@ public class TestFactoryMethodPontosCardeais {
 	@Test
 	public void norte_deveConstruirMovimentadorNorte(){
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory orientacaoFactory = new OrientacaoFactory(superficie);
 		Norte norte = new Norte(orientacaoFactory);
 		
@@ -24,7 +24,7 @@ public class TestFactoryMethodPontosCardeais {
 	@Test
 	public void sul_deveConstruirMovimentadorSul(){
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory orientacaoFactory = new OrientacaoFactory(superficie);
 		Sul sul = new Sul(orientacaoFactory);
 		
@@ -34,7 +34,7 @@ public class TestFactoryMethodPontosCardeais {
 	@Test
 	public void leste_deveConstruirMovimentadorLeste(){
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory orientacaoFactory = new OrientacaoFactory(superficie);
 		Leste leste = new Leste(orientacaoFactory);
 		
@@ -44,7 +44,7 @@ public class TestFactoryMethodPontosCardeais {
 	@Test
 	public void oeste_deveConstruirMovimentadorOeste(){
 		Coordenada coordenada = new Coordenada(0, 0);
-		Superficie superficie = new Superficie(coordenada);
+		Superficie superficie = new Superficie(0, coordenada);
 		OrientacaoFactory orientacaoFactory = new OrientacaoFactory(superficie);
 		Oeste oeste = new Oeste(orientacaoFactory);
 		

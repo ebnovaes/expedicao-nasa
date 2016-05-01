@@ -36,4 +36,8 @@ public class Coordenada {
 		return this.x == that.getX() && this.y == that.getY();
 	}
 	
+	public String toString(){
+		return String.format("%s %s", x, y);
+	}
+	
 }

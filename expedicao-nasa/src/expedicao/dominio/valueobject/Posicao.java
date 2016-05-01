@@ -42,8 +42,13 @@ public final class Posicao {
 		return that.getCoordenada().equals(this.coordenada) && that.getOrientacao().equals(this.orientacao);
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%s %s", coordenada.toString(), orientacao.toString());
+	}
 	
 	private Coordenada coordenada;
 	
 	private Orientacao orientacao;
+
 }

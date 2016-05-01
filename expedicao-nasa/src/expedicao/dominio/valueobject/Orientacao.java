@@ -38,5 +38,8 @@ public abstract class Orientacao {
 		return (that.sigla() == this.sigla());
 	}
 	
+	public String toString(){
+		return String.valueOf(sigla());
+	}
 	
 }

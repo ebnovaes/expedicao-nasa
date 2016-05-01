@@ -7,7 +7,7 @@ public final class Leste extends Orientacao {
 	}
 
 	public char sigla() {
-		return 'L';
+		return 'E';
 	}
 
 	public Orientacao aDireita() {

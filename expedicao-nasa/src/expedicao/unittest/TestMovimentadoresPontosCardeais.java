@@ -93,13 +93,27 @@ public class TestMovimentadoresPontosCardeais {
 	}
 	
 	@Test
-	public void quandoSulRecebeCoordenadaX3Y1_DeveRetornarCoordenadaX3Y1() {
+	public void quandoSulRecebeCoordenadaX3Y1_DeveRetornarCoordenadaX3Y0() {
 		// Arrange
-		Coordenada expected = new Coordenada(3, 1);
+		Coordenada expected = new Coordenada(3, 0);
 		MovimentoSul sul = new MovimentoSul();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(3, 1);
+		Coordenada actual =  sul.avancar(coordenadaReferencia);
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void quandoSulRecebeCoordenadaX5Y0_DeveRetornarCoordenadaX5Y0() {
+		// Arrange
+		Coordenada expected = new Coordenada(5, 0);
+		MovimentoSul sul = new MovimentoSul();
+
+		// Act
+		Coordenada coordenadaReferencia = new Coordenada(5, 0);
 		Coordenada actual =  sul.avancar(coordenadaReferencia);
 		
 		// Assert
@@ -137,13 +151,27 @@ public class TestMovimentadoresPontosCardeais {
 	}
 	
 	@Test
-	public void quandoOesteRecebeCoordenadaX1Y3_DeveRetornarCoordenadaX1Y3() {
+	public void quandoOesteRecebeCoordenadaX1Y3_DeveRetornarCoordenadaX0Y3() {
 		// Arrange
-		Coordenada expected = new Coordenada(1, 3);
+		Coordenada expected = new Coordenada(0, 3);
 		MovimentoOeste oeste = new MovimentoOeste();
 
 		// Act
 		Coordenada coordenadaReferencia = new Coordenada(1, 3);
+		Coordenada actual =  oeste.avancar(coordenadaReferencia);
+		
+		// Assert
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void quandoOesteRecebeCoordenadaX0Y5_DeveRetornarCoordenadaX0Y5() {
+		// Arrange
+		Coordenada expected = new Coordenada(0, 5);
+		MovimentoOeste oeste = new MovimentoOeste();
+
+		// Act
+		Coordenada coordenadaReferencia = new Coordenada(0, 5);
 		Coordenada actual =  oeste.avancar(coordenadaReferencia);
 		
 		// Assert

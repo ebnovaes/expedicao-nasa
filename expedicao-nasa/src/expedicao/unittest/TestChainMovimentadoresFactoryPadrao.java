@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import expedicao.dominio.valueobject.*;
 
-public class TesteChainMovimentadoresFactoryPadrao {
+public class TestChainMovimentadoresFactoryPadrao {
 
 	@Before
 	public void setUp() throws Exception {

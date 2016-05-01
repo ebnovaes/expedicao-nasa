@@ -41,11 +41,11 @@ public class TestEquals {
 	}
 	
 	@Test
-	public void quandoClassesDiferentes_DeveRetornarFalse() {
+	public void quandoClasseComparacaoDiferenteDeCoordenada_DeveRetornarFalse() {
 		Coordenada coordenadaReferencia = new Coordenada(2, 2);
 		String outroObjeto = "";
 		
 		assertNotEquals(outroObjeto, coordenadaReferencia);
 	}
-	
+		
 }

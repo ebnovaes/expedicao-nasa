@@ -19,6 +19,10 @@ public class Coordenada {
 	
 	private int y;
 	
+	public boolean extrapolaSuperiorDireita(Coordenada coordenada){
+		return this.x > coordenada.getX() || this.y > coordenada.getY();
+	}
+	
 	public int hashCode() {
 		final int primo = 31;
 		int result = 1;

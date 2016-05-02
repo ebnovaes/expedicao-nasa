@@ -1,6 +1,6 @@
 package expedicao.exception;
 
-public final class CoordenadaParseException extends Exception {
+public class CoordenadaParseException extends ExpedicaoNasaException {
 
 	public CoordenadaParseException(String mensagem){
 		super(mensagem);

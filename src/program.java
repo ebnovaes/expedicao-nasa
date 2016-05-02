@@ -7,7 +7,7 @@ import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
 
 public class program {
 
-	public static void main(String[] args){
+	public static void mainwww(String[] args) throws Exception{
 		
 //		Coordenada coordenada = new Coordenada(2, 4);
 //		Coordenada coordenadaSuperficie = new Coordenada(5, 5);

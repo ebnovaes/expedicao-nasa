@@ -10,7 +10,7 @@ public final class Superficie {
 		this.coordenada = tamanhoMaximoSuperficie;
 	}
 
-	public Coordenada getTamanhoMaximoSupeficie() {
+	public Coordenada getTamanhoMaximoSuperficie() {
 		return new Coordenada(coordenada.getX(), coordenada.getY());
 	}
 
@@ -41,9 +41,7 @@ public final class Superficie {
 		}
 		
 		Superficie that = (Superficie) obj;
-		if (codigo != that.codigo)
-			return false;
-		return true;
+		return codigo == that.codigo;
 	}
 
 	

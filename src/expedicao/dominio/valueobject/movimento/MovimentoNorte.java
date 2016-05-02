@@ -10,7 +10,7 @@ public final class MovimentoNorte implements MovimentoOrientacao {
 	}
 	
 	public Coordenada avancar(Coordenada coordenadaReferencia) {
-		Coordenada coordenadaLimite =  superficie.getTamanhoMaximoSupeficie();
+		Coordenada coordenadaLimite =  superficie.getTamanhoMaximoSuperficie();
 		int coordenadaReferenciaY = coordenadaReferencia.getY();
 		int coordenadaLimiteY = coordenadaLimite.getY();
 		int yMaisUm = coordenadaReferenciaY + 1;

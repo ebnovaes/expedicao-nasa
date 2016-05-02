@@ -3,81 +3,75 @@ package expedicao.repositorio;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-import expedicao.comum.ComumConstrucaoValueObject;
-import expedicao.dominio.entidade.Sonda;
-import expedicao.dominio.entidade.Superficie;
-import expedicao.dominio.valueobject.Coordenada;
-import expedicao.dominio.valueobject.Posicao;
-import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
-import expedicao.exception.CoordenadaParseException;
-import expedicao.exception.PosicaoParseException;
-import expedicao.rest.modelo.SondaModel;
-import expedicao.rest.modelo.SuperficieModel;
+import expedicao.dominio.entidade.*;
 
-public class EntidadeRepositorio {
-
-	private EntidadeRepositorio() {
+public final class EntidadeRepositorio {
+	
+	private EntidadeRepositorio(){
 		this.superficies = new ArrayList<Superficie>();
+		this.sondas = new ArrayList<Sonda>();
 	}
-
+	
 	public List<Superficie> getSuperficies() {
 		return new ArrayList<Superficie>(this.superficies);
 	}
 	
-	public List<Sonda> getSondas(Superficie superficie) {
-		ArrayList<Sonda> retorno = new ArrayList<>();
-		sondas.stream()
-			  .filter(so -> so.getSuperficie().equals(superficie))
-			  .sorted(Comparator.comparing(st -> st.getOrdem()))
-			  .collect(Collectors.toList());
-		
-		return retorno;
-	}
-	public Superficie getSuperficie(int codigo) {
-		for (Superficie s : superficies) {
-			if (s.getCodigo() == codigo) {
-				return s;
-			}
-		}
-    	return null;
+	public List<Sonda> getSondas() {
+		return new ArrayList<Sonda>(this.sondas);
 	}
 	
-	public Superficie salvarSuperficie(SuperficieModel superficieModel) throws CoordenadaParseException{
-		Coordenada coordenadaSuperficie = ComumConstrucaoValueObject.getCoordenadas(superficieModel.getCoordenadasLimite());
-		int ultimoCodigo = 
-				this.superficies.stream().max(Comparator.comparing(s -> s.getCodigo())).get().getCodigo();
-		Superficie superficie = new Superficie(ultimoCodigo++, coordenadaSuperficie);
+	public void adicionarSuperficie(Superficie superficie){
 		this.superficies.add(superficie);
-		return superficie;
-	}
-	
-	public List<Sonda> salvarSondas(List<SondaModel> sondas, Superficie superficie, OrientacaoFactory orientacaoFactory) throws PosicaoParseException{
-		int ultimoElemento = 
-				this.sondas.stream().filter(f -> f.getSuperficie().equals(superficie))
-				    .max(Comparator.comparing(s -> s.getOrdem()))
-				    .get()
-				    .getOrdem();
-		
-		List<Sonda> retorno = new ArrayList<Sonda>();
-		for (SondaModel s : sondas){
-			Posicao posicao = ComumConstrucaoValueObject.getPosicao(s.getPosicao(), orientacaoFactory);
-			Sonda sonda = new Sonda(posicao, superficie, ultimoElemento++, s.getMovimento());
-			this.sondas.add(sonda);	
-			retorno.add(sonda);
-		}
-		
-		return retorno;
 	}
 
+	public void adicionarSonda(Sonda sonda){
+		this.sondas.add(sonda);
+	}
+
+	public int getMaxSuperficieCodigo(){
+		int ultimoCodigo = 0;
+		
+		List<Superficie> superficies = getSuperficies();
+		Optional<Superficie> max = superficies
+							      .stream()
+								  .max(Comparator.comparing(s -> s.getCodigo()));
+		
+		if (max.isPresent()){
+			ultimoCodigo = max.get().getCodigo();
+		}
+		
+		return ultimoCodigo;
+	}
+	
+	public int getMaxSondaOrdem(Superficie superficie){
+		int ultimoElemento = 0;
+		
+		Optional<Sonda> max = 
+				   sondas
+				  .stream()
+				  .filter(f -> f.getSuperficie().equals(superficie))
+				  .max(Comparator.comparing(s -> s.getOrdem()));
+
+		if (max.isPresent()){
+			ultimoElemento =  max.get().getOrdem();
+		}
+		
+		return ultimoElemento;
+	}
+		
+	private List<Superficie> superficies;
+	
+	private List<Sonda> sondas;
+	
 	public static EntidadeRepositorio getInstancia() {
 		return instancia;
 	}
 	
 	private static EntidadeRepositorio instancia = new EntidadeRepositorio();
 
-	private List<Superficie> superficies;
-	
-	private List<Sonda> sondas;
+	public void excluirSuperficie(Superficie superficie) {
+		this.superficies.removeIf(s -> s.equals(superficie));
+	}
 }

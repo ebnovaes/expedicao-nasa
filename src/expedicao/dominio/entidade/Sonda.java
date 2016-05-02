@@ -4,25 +4,23 @@ import expedicao.dominio.valueobject.Coordenada;
 import expedicao.dominio.valueobject.Posicao;
 import expedicao.dominio.valueobject.movimentador.Movimento;
 import expedicao.dominio.valueobject.movimentador.MovimentoChainFactory;
-import expedicao.dominio.valueobject.orientacao.Orientacao;
-import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
+import expedicao.exception.SondaInvalidaException;
 
 public final class Sonda {
 
-	public Sonda(OrientacaoFactory orientacaoFactory, int ordem, String cadeiaComadosInicial){
-		Coordenada coordenada = new Coordenada(0, 0);
-		Orientacao norte = orientacaoFactory.getNorte();
-		this.posicao = new Posicao(coordenada, norte);
-		this.superficie = orientacaoFactory.getSuperficie();
-		this.ordem = ordem;
-		this.cadeiaComadosInicial = cadeiaComadosInicial;
-	}
-
-	public Sonda(Posicao posicao, Superficie superficie, int ordem, String cadeiaComadosInicial){
+	public Sonda(Posicao posicao, Superficie superficie, int ordem, String cadeiaComadosInicial) throws SondaInvalidaException{
+		Coordenada maxima = superficie.getTamanhoMaximoSuperficie();
+		if (posicao.getCoordenada().extrapolaSuperiorDireita(maxima)){
+			String erro = String.format("Coordenadas iniciais %s são maiores que tamanho da superfície (%s)", 
+										 posicao.getCoordenada(), 
+										 maxima);
+			throw new SondaInvalidaException(erro);
+		}
+		
 		this.posicao = posicao;
 		this.superficie = superficie;
 		this.ordem = ordem;
-		this.cadeiaComadosInicial = cadeiaComadosInicial;
+		this.cadeiaComados = cadeiaComadosInicial;
 	}
 	
 	public Posicao getPosicao(){
@@ -31,6 +29,7 @@ public final class Sonda {
 	
 	public Posicao movimentar(String cadeiaComandos){
 
+		this.cadeiaComados = cadeiaComandos;
 		MovimentoChainFactory movimentoChainFactory = new MovimentoChainFactory();
 		Movimento movimento = movimentoChainFactory.construir();
 
@@ -40,11 +39,12 @@ public final class Sonda {
 			posicaoFinal = movimento.movimentar(comandosChar[i], posicaoFinal);
 		}
 
+		this.posicao = posicaoFinal;
 		return posicaoFinal;		
 	}
 	
 	public Posicao movimentar(){
-		return movimentar(this.cadeiaComadosInicial);
+		return movimentar(this.cadeiaComados);
 	}
 	public Superficie getSuperficie() {
 		return superficie;
@@ -54,11 +54,19 @@ public final class Sonda {
 		return ordem;
 	}
 	
+	public String getCadeiaComados() {
+		return cadeiaComados;
+	}
+
+	public void setCadeiaComados(String cadeiaComados) {
+		this.cadeiaComados = cadeiaComados;
+	}
+
 	private Posicao posicao;
 	
 	private Superficie superficie;
 	
 	private int ordem;
 	
-	private String cadeiaComadosInicial;
+	private String cadeiaComados;
 }

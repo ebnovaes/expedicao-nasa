@@ -1,6 +1,6 @@
 package expedicao.exception;
 
-public final class PosicaoParseException extends Exception {
+public class PosicaoParseException extends ExpedicaoNasaException {
 
 	public PosicaoParseException(String mensagem){
 		super(mensagem);

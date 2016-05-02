@@ -50,7 +50,7 @@ public final class ComumConstrucaoValueObject {
 			throw new PosicaoParseException(erro);
 		}
 		
-		String posicao = de.substring(de.lastIndexOf(" "), de.length() - 1);
+		String posicao = de.substring(de.lastIndexOf(" ") + 1, de.length());
 		if (posicao.length() != 1){
 			erro = String.format("Valor de orientação '%s' incorreta. Valor permitido: N, S, E ou W", posicao);
 			throw new PosicaoParseException(erro);
@@ -62,7 +62,7 @@ public final class ComumConstrucaoValueObject {
 			throw new PosicaoParseException(erro);
 		}
 		
-		String coordenadaStr = de.substring(0, de.lastIndexOf(" ") - 1);
+		String coordenadaStr = de.substring(0, de.lastIndexOf(" "));
 		Coordenada coordenada = null;
 		try{
 			coordenada = getCoordenadas(coordenadaStr);

@@ -2,7 +2,9 @@ package expedicao.rest.modelo;
 
 import java.util.*;
 
-import expedicao.dominio.entidade.*;
+import expedicao.dominio.entidade.Sonda;
+import expedicao.dominio.entidade.Superficie;
+import expedicao.dominio.valueobject.Coordenada;
 
 public final class SuperficieModel {
 
@@ -24,14 +26,24 @@ public final class SuperficieModel {
 		}
 		this.sondas = sondas;
 	}
-
-	public Superficie getSuperficie() {
-		return superficie;
+	
+	public static SuperficieModel transformarBaseadoEm(Superficie superficie, List<Sonda> sondas){
+		if (superficie == null){
+			return null;
+		}
+		
+		SuperficieModel superficieModel = new SuperficieModel();
+		Coordenada coordenada = superficie.getTamanhoMaximoSuperficie();
+		superficieModel.coordenadasLimite = coordenada.toString();
+		
+		List<SondaModel> sondasModel = SondaModel.transformarBaseadoEm(superficie, sondas);
+		superficieModel.sondas = new ArrayList<>(sondasModel);
+		
+		return superficieModel;
 	}
 
 	private String coordenadasLimite;
 	
 	private List<SondaModel> sondas;
 	
-	private Superficie superficie;
 }

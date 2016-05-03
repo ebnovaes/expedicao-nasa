@@ -17,6 +17,12 @@ public class TestComum {
 		return new OrientacaoFactory(superficie);
 	}
 	
+	public static Sonda criarSonda(int xSonda, int ySonda, int ordem, Superficie superficie, String movimento, Orientacao orientacao) throws SondaInvalidaException{
+		Coordenada coordSonda = new Coordenada(xSonda, ySonda);
+		Posicao posicao = new Posicao(coordSonda, orientacao);
+		return new Sonda(posicao, superficie, ordem, movimento);
+	}
+	
 	public static Sonda criarSonda(int xSonda, int ySonda, int xSuperficie, int ySuperficie, String movimento) throws SondaInvalidaException{
 		return criarSonda(xSonda, ySonda, xSuperficie, ySuperficie, movimento, new Norte(null));
 	}

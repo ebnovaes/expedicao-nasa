@@ -14,23 +14,22 @@ import expedicao.dominio.valueobject.Posicao;
 import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
 import expedicao.exception.CoordenadaParseException;
 import expedicao.exception.ExpedicaoNasaException;
-import expedicao.exception.PosicaoParseException;
-import expedicao.exception.SondaInvalidaException;
 import expedicao.repositorio.EntidadeRepositorio;
 import expedicao.rest.modelo.SondaModel;
 import expedicao.rest.modelo.SuperficieModel;
 
 public class EntidadeServico {
 
-	public EntidadeServico() {
+	public EntidadeServico(EntidadeRepositorio entidadeRepositorio) {
+		this.repositorio = entidadeRepositorio;
 	}
 
 	public List<Superficie> getSuperficies() {
-		return new ArrayList<Superficie>(EntidadeRepositorio.getInstancia().getSuperficies());
+		return new ArrayList<Superficie>(repositorio.getSuperficies());
 	}
 	
 	public List<Sonda> getSondas(Superficie superficie) {
-		List<Sonda> sondas = EntidadeRepositorio.getInstancia().getSondas();
+		List<Sonda> sondas = repositorio.getSondas();
 		List<Sonda> retorno =
 				sondas.stream()
 					  .filter(so -> so.getSuperficie().equals(superficie))
@@ -92,6 +91,6 @@ public class EntidadeServico {
 		return retorno;
 	}
 	
-	private EntidadeRepositorio repositorio = EntidadeRepositorio.getInstancia();
+	private EntidadeRepositorio repositorio;
 
 }

@@ -16,6 +16,14 @@ public final class SuperficieModel {
 		this.coordenadasLimite = coordenadasLimite;
 	}
 
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
 	public List<SondaModel> getSondas() {
 		return new ArrayList<>(sondas);
 	}
@@ -34,6 +42,7 @@ public final class SuperficieModel {
 		
 		SuperficieModel superficieModel = new SuperficieModel();
 		Coordenada coordenada = superficie.getTamanhoMaximoSuperficie();
+		superficieModel.codigo = superficie.getCodigo();
 		superficieModel.coordenadasLimite = coordenada.toString();
 		
 		List<SondaModel> sondasModel = SondaModel.transformarBaseadoEm(superficie, sondas);
@@ -43,6 +52,8 @@ public final class SuperficieModel {
 	}
 
 	private String coordenadasLimite;
+	
+	private int codigo;
 	
 	private List<SondaModel> sondas;
 	

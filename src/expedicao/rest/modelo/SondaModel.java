@@ -5,7 +5,6 @@ import java.util.List;
 
 import expedicao.dominio.entidade.Sonda;
 import expedicao.dominio.entidade.Superficie;
-import expedicao.dominio.valueobject.Coordenada;
 
 public final class SondaModel {
 

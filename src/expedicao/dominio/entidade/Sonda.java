@@ -8,6 +8,37 @@ import expedicao.exception.SondaInvalidaException;
 
 public final class Sonda {
 
+	@Override
+	public int hashCode() {
+		final int prime = 27;
+		int result = 1;
+		result = prime * result + ordem;
+		result = prime * result + ((superficie == null) ? 0 : superficie.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj){
+			return true;
+		}
+			
+		if (obj == null || getClass() != obj.getClass()){
+			return false;
+		}
+			
+		Sonda that = (Sonda) obj;
+		if (ordem != that.ordem){
+			return false;
+		}
+			
+		if ((superficie == null && that.superficie != null) || (!superficie.equals(that.superficie))){
+			return false;
+		} 
+			
+		return true;
+	}
+
 	public Sonda(Posicao posicao, Superficie superficie, int ordem, String cadeiaComadosInicial) throws SondaInvalidaException{
 		Coordenada maxima = superficie.getTamanhoMaximoSuperficie();
 		if (posicao.getCoordenada().extrapolaSuperiorDireita(maxima)){

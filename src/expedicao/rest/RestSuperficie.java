@@ -9,6 +9,7 @@ import expedicao.comum.ComumHttpResponse;
 import expedicao.dominio.entidade.*;
 import expedicao.dominio.valueobject.orientacao.OrientacaoFactory;
 import expedicao.exception.*;
+import expedicao.repositorio.EntidadeRepositorioImpl;
 import expedicao.rest.modelo.*;
 import expedicao.servico.EntidadeServico;
 
@@ -78,5 +79,30 @@ public class RestSuperficie {
 		SondaModel sondaModel = SondaModel.transformarBaseadoEm(sonda);
 		return Response.status(Response.Status.OK).entity(sondaModel).build();
 	}
-	private EntidadeServico servico = new EntidadeServico();
+	
+	@PUT
+	@Path("{codigo}/sondas")
+	public Response movimentarSonda(@PathParam("codigo")int codigo,
+							 		SondaModelMovimento sondaModelMovimento)
+	{
+		Superficie superficie = servico.getSuperficie(codigo);
+		if (superficie == null){
+			String mensagem = String.format("Superfície com código %s não encontrada", codigo);
+			return ComumHttpResponse.construirComErrorModel(mensagem, Response.Status.NOT_FOUND);
+		}
+		
+		int ordem = sondaModelMovimento.getOrdem();
+		Sonda sonda = servico.getSonda(superficie, ordem);
+		if (sonda == null){
+			String mensagem = String.format("Sonda de ordem %s não encontrada", ordem);
+			return ComumHttpResponse.construirComErrorModel(mensagem, Response.Status.NOT_FOUND);
+		}
+		
+		sonda.movimentar(sondaModelMovimento.getMovimento());
+		
+		SondaModel sondaModel = SondaModel.transformarBaseadoEm(sonda);
+		return Response.status(Response.Status.OK).entity(sondaModel).build();
+	}
+	
+	private EntidadeServico servico = new EntidadeServico(EntidadeRepositorioImpl.getInstancia());
 }

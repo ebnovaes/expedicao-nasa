@@ -8,6 +8,14 @@ import expedicao.dominio.entidade.Superficie;
 
 public final class SondaModel {
 
+	public int getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(int ordem) {
+		this.ordem = ordem;
+	}
+
 	public String getPosicao() {
 		return posicao;
 	}
@@ -29,6 +37,7 @@ public final class SondaModel {
 		for (Sonda s : sondas) {
 			if (s.getSuperficie().equals(superficie)) {
 				SondaModel sondaModel = new SondaModel();
+				sondaModel.setOrdem(s.getOrdem());
 				sondaModel.setPosicao(s.getPosicao().toString());
 				sondaModel.setMovimento(s.getCadeiaComados());
 				retorno.add(sondaModel);
@@ -40,11 +49,14 @@ public final class SondaModel {
 
 	public static SondaModel transformarBaseadoEm(Sonda sonda) {
 		SondaModel sondaModel = new SondaModel();
+		sondaModel.setOrdem(sonda.getOrdem());
 		sondaModel.setPosicao(sonda.getPosicao().toString());
 		sondaModel.setMovimento(sonda.getCadeiaComados());
 		return sondaModel;
 	}
 
+	private int ordem;
+	
 	private String posicao;
 
 	private String movimento;

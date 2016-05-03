@@ -8,20 +8,20 @@ import expedicao.dominio.valueobject.Coordenada;
 
 public final class SuperficieModel {
 
-	public String getCoordenadasLimite() {
-		return coordenadasLimite;
-	}
-
-	public void setCoordenadasLimite(String coordenadasLimite) {
-		this.coordenadasLimite = coordenadasLimite;
-	}
-
 	public int getCodigo() {
 		return codigo;
 	}
 
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+	
+	public String getCoordenadasLimite() {
+		return coordenadasLimite;
+	}
+
+	public void setCoordenadasLimite(String coordenadasLimite) {
+		this.coordenadasLimite = coordenadasLimite;
 	}
 
 	public List<SondaModel> getSondas() {
